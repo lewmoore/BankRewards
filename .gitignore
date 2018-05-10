@@ -2,4 +2,3 @@ node_modules/
 public/components
 .nyc_output
 .sass-cache
-config/config.js
