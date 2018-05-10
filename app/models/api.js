@@ -21,10 +21,14 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 
 var exports = module.exports = {};
 
+// this is called by /auth route and the auth_uri comes from call to simple-oauth2 library. The call is above.
+// The end result of this call is rendering of the log in screen.
+// The user then gains control and logs in and selects rewards to athorize. This then fires over to route /authredirect
 exports.getAuthURL = function() {
  return authorization_uri;
 };
 
+// this is passed the auth code from the route and exchanges it for a bearer token. this then completes the OAuth process
 exports.processCode = function(code, cb) {
    oauth2.authCode.getToken({ code: code, redirect_uri: config.REDIRECT_URI}, function(error, result) {
        if (error) {

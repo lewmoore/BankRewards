@@ -11,10 +11,12 @@ router.get('/', function(req, res) {
  res.render('index');
 });
 
+// This route is called when user clicks button on index.js and this points to api.js line 24
 router.get('/auth', function (req, res) {
    res.redirect(api.getAuthURL());
 });
 
+// This is called once the user is logged in and authorizes some reward accounts
 router.get('/authredirect',function(req,res) {
    if (!Object.keys(req.query).length) {
        return res.status(401).render('error', {error: 'Did not receive authorization code.'});
